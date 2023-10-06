@@ -4,8 +4,8 @@ A framework to easily create spec forms. It uses [SimpleRene](https://github.com
 
 You can easily get forms like this: 
 
-![Morphic Image](images/form-morphic.png)
+![Morphic Image](https://github.com/pharo-spec/Spec-Form/blob/main/images/spec-morphic.png)
 
  ... or this: 
 
-![Gtk Image](images/form-gtk.png)
+![Gtk Image](https://github.com/pharo-spec/Spec-Form/blob/main/images/spec-gtk.png)
