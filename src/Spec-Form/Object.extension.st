@@ -1,9 +1,9 @@
 Extension { #name : #Object }
 
 { #category : #'*Spec-Form' }
-Object >> asSpPresenter [
+Object >> asFormPresenter [
 	
 	^ SRDynamicDescriptionCache 
 		use: Dictionary new 
-		during: [ self simpleReneDescription asSpecPresenterOn: self ]
+		during: [ self simpleReneDescription asFormPresenterOn: self ]
 ]
