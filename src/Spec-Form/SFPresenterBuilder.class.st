@@ -1,28 +1,29 @@
 Class {
-	#name : #SFPresenterBuilder,
-	#superclass : #SRVisitor,
+	#name : 'SFPresenterBuilder',
+	#superclass : 'SRVisitor',
 	#traits : 'SpTPresenterBuilder',
 	#classTraits : 'SpTPresenterBuilder classTrait',
 	#instVars : [
 		'presenter'
 	],
-	#category : #'Spec-Form'
+	#category : 'Spec-Form',
+	#package : 'Spec-Form'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 SFPresenterBuilder >> appendWidget: aWidget description: aDescription [
 
 	self subclassResponsibility
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SFPresenterBuilder >> instantiate: aPresenterClass [
 	"Instantiate a SpPresenter subclass and set its instance owner"
 
 	^ aPresenterClass owner: self presenter
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SFPresenterBuilder >> instantiate: aPresenterClass on: aModel [
 	"Instantiate a SpPresenter subclass and set its instance owner and model"
 
@@ -31,31 +32,31 @@ SFPresenterBuilder >> instantiate: aPresenterClass on: aModel [
 		on: aModel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SFPresenterBuilder >> memento [
 
 	^ self presenter memento
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SFPresenterBuilder >> presenter [
 
 	^ presenter
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SFPresenterBuilder >> presenter: anObject [
 
 	presenter := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SFPresenterBuilder >> read: aDescription [
 
 	^ self memento simpleReneReadUsing: aDescription
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SFPresenterBuilder >> visitBooleanDescription: aDescription [ 
 	| checkbox |
 
@@ -70,14 +71,14 @@ SFPresenterBuilder >> visitBooleanDescription: aDescription [
 	self appendWidget: checkbox description: aDescription
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SFPresenterBuilder >> visitContainer: aContainer [
 		
 	aContainer children 
 		do: [ :each | each acceptSimpleReneVisitor: self ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SFPresenterBuilder >> visitMemoDescription: aDescription [
 	| textArea |
 
@@ -92,7 +93,7 @@ SFPresenterBuilder >> visitMemoDescription: aDescription [
 	self appendWidget: textArea description: aDescription
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SFPresenterBuilder >> visitNumberDescription: aDescription [ 
 	| numberInput |
 
@@ -115,7 +116,7 @@ SFPresenterBuilder >> visitNumberDescription: aDescription [
 	self appendWidget: numberInput description: aDescription
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SFPresenterBuilder >> visitSingleOptionDescription: aDescription [
 	| optionList |
 
@@ -136,7 +137,7 @@ SFPresenterBuilder >> visitSingleOptionDescription: aDescription [
 		description: aDescription
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SFPresenterBuilder >> visitStringDescription: aDescription [ 
 	| textInput |
 
@@ -151,23 +152,19 @@ SFPresenterBuilder >> visitStringDescription: aDescription [
 	self appendWidget: textInput description: aDescription
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SFPresenterBuilder >> visitToOneRelationDescription: aDescription [
 	| relationPresenter |
 
-	(relationPresenter := self newPresenter)
-		layout: (SpFrameLayout new 
-			"label: aDescription label;"
-			child: ((aDescription reference asFormPresenterOn: (self read: aDescription))
-				owner: presenter;
-				yourself);
-			yourself).
+			
+	relationPresenter := self 
+		instantiate: SFToOnePresenter 
+		on: (aDescription -> self memento).
 			
 	self appendWidget: relationPresenter description: aDescription
-		
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SFPresenterBuilder >> visitUrlDescription: aDescription [ 
 	| textInput url |
 
@@ -184,7 +181,7 @@ SFPresenterBuilder >> visitUrlDescription: aDescription [
 	self appendWidget: textInput description: aDescription
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 SFPresenterBuilder >> write: anObject description: aDescription [
 
 	self memento 

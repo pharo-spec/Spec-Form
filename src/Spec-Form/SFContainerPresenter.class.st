@@ -1,22 +1,23 @@
 Class {
-	#name : #SFContainerPresenter,
-	#superclass : #SpPresenter,
+	#name : 'SFContainerPresenter',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'memento',
 		'description',
 		'parent',
 		'presenterBuilderClass'
 	],
-	#category : #'Spec-Form'
+	#category : 'Spec-Form',
+	#package : 'Spec-Form'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 SFContainerPresenter class >> defaultPresenterBuilder [
 
 	^ SFGridPresenterBuilder
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SFContainerPresenter class >> memento: aMemento [
 	
 	^ self 
@@ -24,7 +25,7 @@ SFContainerPresenter class >> memento: aMemento [
 		description: aMemento simpleReneDescription
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SFContainerPresenter class >> memento: aMemento description: aDescription [
 
 	^ self 
@@ -33,7 +34,7 @@ SFContainerPresenter class >> memento: aMemento description: aDescription [
 		parent: nil
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 SFContainerPresenter class >> memento: aMemento description: aDescription parent: aComponent [
 	
 	^ self basicNew
@@ -43,7 +44,7 @@ SFContainerPresenter class >> memento: aMemento description: aDescription parent
 		yourself
 ]
 
-{ #category : #'private building' }
+{ #category : 'private building' }
 SFContainerPresenter >> build [
 
 	self presenterBuilderClass new 
@@ -51,20 +52,20 @@ SFContainerPresenter >> build [
 		visit: self description
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SFContainerPresenter >> description [
 
 	^ description
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SFContainerPresenter >> initialize [
 	
 	super initialize.
 	self build
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 SFContainerPresenter >> initializeMemento: aMemento description: aDescription parent: aParent [ 
 	
 	memento := aMemento.
@@ -74,25 +75,25 @@ SFContainerPresenter >> initializeMemento: aMemento description: aDescription pa
 	self initialize
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SFContainerPresenter >> memento [
 
 	^ memento
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SFContainerPresenter >> parent [
 
 	^ parent
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SFContainerPresenter >> presenterBuilderClass [
 
 	^ presenterBuilderClass ifNil: [ self class defaultPresenterBuilder ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 SFContainerPresenter >> presenterBuilderClass: anObject [
 
 	presenterBuilderClass := anObject

@@ -1,14 +1,15 @@
 Class {
-	#name : #SFGridPresenterBuilder,
-	#superclass : #SFPresenterBuilder,
+	#name : 'SFGridPresenterBuilder',
+	#superclass : 'SFPresenterBuilder',
 	#instVars : [
 		'gridLayout',
 		'builder'
 	],
-	#category : #'Spec-Form'
+	#category : 'Spec-Form',
+	#package : 'Spec-Form'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 SFGridPresenterBuilder >> appendWidget: aWidget description: aDescription [
 		
 	builder 
@@ -17,7 +18,7 @@ SFGridPresenterBuilder >> appendWidget: aWidget description: aDescription [
 		nextRow
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 SFGridPresenterBuilder >> visitContainer: aContainer [
 
 	gridLayout := SpGridLayout new.

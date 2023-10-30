@@ -1,12 +1,12 @@
-Extension { #name : #SRUrlDescription }
+Extension { #name : 'SRUrlDescription' }
 
-{ #category : #'*Spec-Form' }
+{ #category : '*Spec-Form' }
 SRUrlDescription >> urlLabel [
 
 	^ self propertyAt: #urlLabel ifAbsent: [ nil ]
 ]
 
-{ #category : #'*Spec-Form' }
+{ #category : '*Spec-Form' }
 SRUrlDescription >> urlLabel: aString [
 
 	^ self propertyAt: #urlLabel put: aString

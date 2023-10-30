@@ -1,6 +1,6 @@
-Extension { #name : #SRContainer }
+Extension { #name : 'SRContainer' }
 
-{ #category : #'*Spec-Form' }
+{ #category : '*Spec-Form' }
 SRContainer >> asFormPresenterOn: anObject [
 	
 	^ SFContainerPresenter memento: (anObject simpleReneMementoClass
@@ -8,13 +8,13 @@ SRContainer >> asFormPresenterOn: anObject [
 		description: self)
 ]
 
-{ #category : #'*Spec-Form' }
+{ #category : '*Spec-Form' }
 SRContainer >> initialExtent [
 
 	^ self propertyAt: #initialExtent ifAbsent: [ nil ]
 ]
 
-{ #category : #'*Spec-Form' }
+{ #category : '*Spec-Form' }
 SRContainer >> initialExtent: aPoint [
 
 	self propertyAt: #initialExtent put: aPoint

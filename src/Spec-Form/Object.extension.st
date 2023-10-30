@@ -1,6 +1,6 @@
-Extension { #name : #Object }
+Extension { #name : 'Object' }
 
-{ #category : #'*Spec-Form' }
+{ #category : '*Spec-Form' }
 Object >> asFormPresenter [
 	
 	^ SRDynamicDescriptionCache 
