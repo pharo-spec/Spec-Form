@@ -5,7 +5,8 @@ Class {
 		'memento',
 		'description',
 		'parent',
-		'presenterBuilderClass'
+		'presenterBuilderClass',
+		'title'
 	],
 	#category : 'Spec-Form',
 	#package : 'Spec-Form'
@@ -44,7 +45,7 @@ SFContainerPresenter class >> memento: aMemento description: aDescription parent
 		yourself
 ]
 
-{ #category : 'private building' }
+{ #category : 'building' }
 SFContainerPresenter >> build [
 
 	self presenterBuilderClass new 
@@ -73,6 +74,15 @@ SFContainerPresenter >> initializeMemento: aMemento description: aDescription pa
 	parent := aParent.
 	
 	self initialize
+]
+
+{ #category : 'accessing' }
+SFContainerPresenter >> initializeWindow: aWindowPresenter [
+	
+	super initializeWindow: aWindowPresenter.
+	aWindowPresenter 
+		title: description label;
+		initialExtent: description initialExtent
 ]
 
 { #category : 'accessing' }
