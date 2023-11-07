@@ -6,8 +6,9 @@ Class {
 	#instVars : [
 		'presenter'
 	],
-	#category : 'Spec-Form',
-	#package : 'Spec-Form'
+	#category : 'Spec-Form-Builder',
+	#package : 'Spec-Form',
+	#tag : 'Builder'
 }
 
 { #category : 'private' }
@@ -120,7 +121,7 @@ SFPresenterBuilder >> visitNumberDescription: aDescription [
 SFPresenterBuilder >> visitSingleOptionDescription: aDescription [
 	| optionList |
 
-	optionList := self newDropList
+	optionList := self newDropDown
 		items: aDescription options;
 		display: [ :anElement | 
 			anElement
@@ -153,9 +154,19 @@ SFPresenterBuilder >> visitStringDescription: aDescription [
 ]
 
 { #category : 'visiting' }
+SFPresenterBuilder >> visitToManyRelationDescription: aDescription [
+	| relationPresenter |
+			
+	relationPresenter := self 
+		instantiate: SFToManyPresenter 
+		on: (aDescription -> self memento).
+			
+	self appendWidget: relationPresenter description: aDescription
+]
+
+{ #category : 'visiting' }
 SFPresenterBuilder >> visitToOneRelationDescription: aDescription [
 	| relationPresenter |
-
 			
 	relationPresenter := self 
 		instantiate: SFToOnePresenter 

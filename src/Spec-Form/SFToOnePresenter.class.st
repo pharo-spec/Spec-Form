@@ -7,9 +7,9 @@ Class {
 		'label',
 		'editButton'
 	],
-	#category : 'Spec-Form-',
+	#category : 'Spec-Form-Presenter',
 	#package : 'Spec-Form',
-	#tag : ''
+	#tag : 'Presenter'
 }
 
 { #category : 'layout' }

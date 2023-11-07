@@ -8,8 +8,9 @@ Class {
 		'presenterBuilderClass',
 		'title'
 	],
-	#category : 'Spec-Form',
-	#package : 'Spec-Form'
+	#category : 'Spec-Form-Presenter',
+	#package : 'Spec-Form',
+	#tag : 'Presenter'
 }
 
 { #category : 'private' }
